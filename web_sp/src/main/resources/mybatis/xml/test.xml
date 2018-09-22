@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <mapper namespace="TEST">
+
+	<select id="selectTest" resultType="te" parameterType="te">
+		select * from test
+		where 1=1
+		<if test="tnum != null">
+			and tnum = #{tnum}
+		</if>
+	</select>
+</mapper> -->
+
+<mapper namespace="BOARD">
+
+	<select id="selectBoard_info" resultType="bi" parameterType="bi">
+		select * from board_info
+		where 1=1
+		<if test="binum != null">
+			and binum = #{binum}
+		</if>
+	</select>
+</mapper>

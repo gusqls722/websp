@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <bean id="ds" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+    	<property name="driverClassName" value="org.mariadb.jdbc.Driver"/>
+    	<property name="url" value="jdbc:mariadb://localhost:3306/bdi"/>
+    	<property name="username" value="bdi"/>
+    	<property name="password" value="bditest"/>
+    </bean>
+    
+    <bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean">
+    	<property name="dataSource" ref="ds"/>
+    	<property name="configLocation" value="classpath:mybatis/my-conf.xml"/>
+    	<property name="mapperLocations" value="classpath:mybatis/xml/*.xml"/>
+    </bean>
+    
+    <bean id="sst" class="org.mybatis.spring.SqlSessionTemplate">
+    	<constructor-arg index="0" ref="ssf"></constructor-arg>
+    </bean>
+    
+</beans>
